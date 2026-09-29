@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ExamCraft | Question Bank</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark">E</span><span>ExamCraft</span></div>
+      <div class="workspace-label">WORKSPACE</div>
+      <nav>
+        <button class="nav-item active" data-view="library"><span class="nav-icon">▦</span> Question library</button>
+        <button class="nav-item" data-view="builder"><span class="nav-icon">✦</span> Paper generator</button>
+        <button class="nav-item" data-view="analytics"><span class="nav-icon">◒</span> Frequency insights</button>
+      </nav>
+      <div class="sidebar-bottom"><div class="sync-dot"></div><div><strong>Workspace synced</strong><small>Last saved just now</small></div></div>
+    </aside>
+    <main class="main-content">
+      <header class="topbar"><div><p class="eyebrow">FACULTY WORKSPACE / 2026</p><h1 id="page-title">Question library</h1></div><button class="primary-button" id="open-add">＋ Add question</button></header>
+      <section class="view" id="library-view">
+        <div class="stats-grid"><div class="stat-card"><span>Total questions</span><strong id="total-count">—</strong><small>Across all units</small></div><div class="stat-card accent"><span>Generated this week</span><strong id="papers-count">—</strong><small>+12% from last week</small></div><div class="stat-card"><span>Average score</span><strong id="score-count">—%</strong><small>Across submitted papers</small></div><div class="stat-card"><span>Needs review</span><strong>8</strong><small class="warning-text">Requires your attention</small></div></div>
+        <div class="content-panel"><div class="panel-heading"><div><h2>Question bank</h2><p>Tag and curate questions before assembling a paper.</p></div><span class="result-count" id="result-count"></span></div><div class="filters"><label class="search-box"><span>⌕</span><input id="search" placeholder="Search questions, topics or units"></label><select id="difficulty"><option value="">All difficulty</option><option>Easy</option><option>Medium</option><option>Hard</option></select><select id="unit"><option value="">All units</option></select><button class="filter-button" id="clear-filters">Clear</button></div><div class="table-wrap"><table><thead><tr><th>Question</th><th>Unit / topic</th><th>Difficulty</th><th>Type</th><th></th></tr></thead><tbody id="question-rows"></tbody></table></div></div>
+      </section>
+      <section class="view hidden" id="builder-view"><div class="builder-layout"><div class="content-panel builder-panel"><div class="panel-heading"><div><p class="eyebrow">STEP 01 / CONFIGURE</p><h2>Build a randomized paper</h2><p>Set the exact balance you want. ExamCraft will prevent repeated questions.</p></div></div><form id="paper-form"><label>Total questions<input type="number" id="total" value="5" min="1" max="100"></label><label>Unit or topic<select id="topic"><option value="">All units</option></select></label><div class="mix-label"><span>Difficulty mix</span><output id="mix-total">5 questions</output></div><div class="mix-grid"><label>Easy<input type="number" id="easy" value="2" min="0"></label><label>Medium<input type="number" id="medium" value="2" min="0"></label><label>Hard<input type="number" id="hard" value="1" min="0"></label></div><button class="primary-button wide" type="submit">✦ Generate paper</button></form></div><div class="content-panel preview-panel"><div class="panel-heading"><div><p class="eyebrow">STEP 02 / REVIEW</p><h2 id="paper-title">Your paper is ready to generate</h2></div></div><div id="paper-preview" class="empty-state"><div class="empty-icon">✦</div><p>Choose a mix and generate a paper to preview it here.</p></div></div></div></section>
+      <section class="view hidden" id="analytics-view"><div class="content-panel analytics-panel"><div class="panel-heading"><div><p class="eyebrow">QUESTION FREQUENCY</p><h2>Coverage at a glance</h2><p>Understand how your bank is distributed before you publish.</p></div></div><div class="analytics-grid"><div><h3>By difficulty</h3><div id="difficulty-bars"></div></div><div><h3>By unit</h3><div id="unit-bars"></div></div></div></div></section>
+    </main>
+  </div>
+  <dialog id="add-dialog"><form method="dialog" id="add-form"><button class="close-button" value="cancel">×</button><p class="eyebrow">NEW QUESTION</p><h2>Add to question bank</h2><label>Question text<textarea id="new-text" required rows="3"></textarea></label><div class="form-row"><label>Unit<input id="new-unit" required placeholder="e.g. Algorithms"></label><label>Topic<input id="new-topic" required placeholder="e.g. Sorting"></label></div><div class="form-row"><label>Difficulty<select id="new-difficulty"><option>Easy</option><option>Medium</option><option>Hard</option></select></label><label>Type<select id="new-type"><option>MCQ</option><option>Short answer</option><option>Long answer</option></select></label></div><label>Correct answer<input id="new-answer" placeholder="Optional for descriptive questions"></label><button class="primary-button" type="submit">Save question</button></form></dialog>
+  <script src="/app.js"></script>
+</body>
+</html>
